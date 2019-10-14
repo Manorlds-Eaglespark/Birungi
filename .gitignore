@@ -1,0 +1,6 @@
+.env
+.vscode/
+venv/
+app/__pycache__/
+app/utilities/__pycache__/*
+app/databases/__pycache__/
