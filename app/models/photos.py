@@ -12,14 +12,22 @@ class Photo(db.Model):
     url = db.Column(db.String(255))
     product = db.relationship('Product', backref='photo')
 
-    def __init__(self, photo_data):
+    def __init__(self, product_id, url):
         """Initialize an photo object"""
-        self.product_id = photo_data["product_id"]
-        self.url = photo_data["url"]
+        self.product_id = product_id
+        self.url = url
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 class PhotoSchema(ma.Schema):
     class Meta:
-        fields = ("id", "product_id", "url")
+        fields = ("id", "url")
 
 photo_schema = PhotoSchema()
 photos_schema = PhotoSchema(many=True)

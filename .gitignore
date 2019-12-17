@@ -4,3 +4,4 @@ venv/
 app/__pycache__/
 app/utilities/__pycache__/*
 app/databases/__pycache__/
+__pycache__/
